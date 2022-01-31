@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+  <mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Formulations</mat-label>
+    <mat-chip-list #chipList aria-label="Formulations selection">
+      <mat-chip
+        *ngFor="let formulation of formulations"
+        (removed)="remove(formulation)">
+        {{formulation}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="User says"
+        #formulationInput
+        formControlName="formulations"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Response</mat-label>
+    <input type="text" matInput formControlName="response" placeholder="Bot anwsers">
+    <mat-error *ngIf="form.controls.response.error.required">
+      Response is require
+    </mat-error>
+  </mat-form-field>
+
+  <button (click)="submitIntent()" >Submit</button>
+  <!-- [disabled]="!form.valid" -->
+</form>
+

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Intent } from 'src/app/shared/model/intent';
 import { IntentsService } from 'src/app/shared/service/intents.service';
-import { SimpleIntentsDialogComponent } from './simple-intents-dialog/simple-intents-dialog.component';
+import { IntentsDialogComponent } from './intents-dialog/intents-dialog.component';
 
 @Component({
   selector: 'app-intents',
@@ -29,7 +29,7 @@ export class IntentsComponent implements OnInit {
   }
 
   openIntent(intentId?: string): void {
-    const dialogRef = this.dialog.open(SimpleIntentsDialogComponent);
+    const dialogRef = this.dialog.open(IntentsDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
