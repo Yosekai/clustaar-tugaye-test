@@ -23,9 +23,9 @@
   <mat-form-field appearance="fill">
     <mat-label>Response</mat-label>
     <input type="text" matInput formControlName="response" placeholder="Bot anwsers">
-    <mat-error *ngIf="form.controls.response.error.required">
+    <!-- <mat-error *ngIf="form.controls.response.error.required">
       Response is require
-    </mat-error>
+    </mat-error> -->
   </mat-form-field>
 
   <button (click)="submitIntent()" >Submit</button>
