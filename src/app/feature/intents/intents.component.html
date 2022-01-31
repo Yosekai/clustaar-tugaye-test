@@ -1,0 +1,15 @@
+<button (click)="openIntent()">Add intents</button>
+<table *ngIf="intents.length">
+  <tr>
+    <th>Intent</th>
+    <th>Response</th>
+  </tr>
+  <tr *ngFor="let intent of intents" (click)="openIntent(intent.id)">
+    <td>{{ intent.formulations[0] }}</td>
+    <td>
+      {{ intent.response | slice:0:10 }}<ng-container *ngIf="intent.response.length > 10">...</ng-container>
+    </td>
+  </tr>
+</table>
+<ng-container *ngIf="!isLoading && !intents.length">No Intents</ng-container>
+<ng-container *ngIf="isLoading">Loading</ng-container>
